@@ -125,7 +125,7 @@
                 const material = document.getElementById('input-material').value;
                 const features = document.getElementById('input-features').value;
                 const user_prompt = `상품명은 "${productName}"이야. 색상은 "${color}"이야. 소재 구성은 "${material}"이야. 상품 특징은 ${features}.`
-                const response = await fetch('https://fph3x28e00.execute-api.ap-northeast-2.amazonaws.com/prod/prod/generate', {
+                const response = await fetch('https://fph3x28e00.execute-api.ap-northeast-2.amazonaws.com/prod/generate', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json'
