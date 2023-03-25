@@ -112,6 +112,7 @@
             <input type="text" id="input-product-name" placeholder="제품명">
             <input type="text" id="input-color" placeholder="색상  |  ex) 블랙, 레드, 아이보리">
             <input type="text" id="input-material" placeholder="소재  |  ex) 면 80, 레이온 20">
+            <input type="text" id="input-textile" placeholder="신축성, 비침, 안감유무  |  ex) 신축성 좋음, 비침 없음, 안감 없음, 두께감 두꺼움">
             <input type="text" id="input-features" placeholder="제품 특징을 한문장으로 표현해주세요.">
             <button onclick="generateData()">요청하기</button>
         </div>
@@ -160,6 +161,7 @@
                 document.getElementById('input-product-name').value = '';
                 document.getElementById('input-color').value = '';
                 document.getElementById('input-material').value = '';
+                document.getElementById('input-textile').value = '';
                 document.getElementById('input-features').value = '';
             } catch (error) {
                 console.error(error);
