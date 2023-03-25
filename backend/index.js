@@ -1,7 +1,7 @@
-const apiKey = "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"
+const apiKey = "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"
 const { Configuration, OpenAIApi } = require("openai");
 
-const serverless = require('serverless-http');
+// const serverless = require('serverless-http');
 const express = require('express');
 const app = express();
 const cors = require('cors');
@@ -13,30 +13,27 @@ const configuration = new Configuration({
   const openai = new OpenAIApi(configuration);
 
 // CORS 이슈 해결
-let corsOptions = {
-    origin: "https://fashiongen.pages.dev",
-    credentials: true
-}
-app.use(cors(corsOptions));
+// let corsOptions = {
+//     origin: "https://fashiongen.pages.dev",
+//     credentials: true
+// }
+// app.use(cors(corsOptions));
+app.use(cors());
 
 // POST 요청 받을수 있게 만듬
 app.use(express.json()) // for parsing application/json
 app.use(express.urlencoded({ extended: true })) // for parsing application/x-www-form-urlencoded
 
-app.use(function(req, res, next) {
-  res.header("Access-Control-Allow-Origin", "*"); // Allow requests from any origin
-  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept"); // Allow specified headers
-  next();
-});
-
 
 // GET method route
 app.get('/', function (req, res) {
+    // res.header("Access-Control-Allow-Origin", "*");
     res.send('문구 생성 사이트');
   });
 
 // POST method route
 app.post('/generate', async function (req, res) {
+    // res.header("Access-Control-Allow-Origin", "*");
     const completion = await openai.createCompletion({
     model: req.body.model,
     max_tokens: req.body.max_tokens,
@@ -47,10 +44,11 @@ app.post('/generate', async function (req, res) {
     let description = resData.data.choices[0].text
     console.log(resData);
     res.json({"AI": description});
+    // res.json({"AI": "test"});
 });
 
-// app.listen(3000);
-module.exports.handler = serverless(app);
+app.listen(3000);
+// module.exports.handler = serverless(app);
 
 // 스윙미 프릴 크롭티
 // 아이보리, 베이지, 스카이블루, 그레이, 블랙
