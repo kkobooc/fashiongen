@@ -1,7 +1,6 @@
 const apiKey = "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"
 const { Configuration, OpenAIApi } = require("openai");
 
-
 const serverless = require('serverless-http');
 const express = require('express');
 const app = express();
@@ -15,7 +14,7 @@ const configuration = new Configuration({
 
 // CORS 이슈 해결
 let corsOptions = {
-    origin: 'https://fashiongen.pages.dev/',
+    origin: ["https://fashiongen.pages.dev","https://fashiongen.ai"],
     credentials: true
 }
 app.use(cors(corsOptions));
