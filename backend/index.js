@@ -1,9 +1,12 @@
 const apiKey = "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"
 const { Configuration, OpenAIApi } = require("openai");
 
+
+const serverless = require('serverless-http');
 const express = require('express');
-const cors = require('cors');
 const app = express();
+const cors = require('cors');
+
 
 const configuration = new Configuration({
     apiKey: apiKey
@@ -11,12 +14,12 @@ const configuration = new Configuration({
   const openai = new OpenAIApi(configuration);
 
 // CORS 이슈 해결
-// let corsOptions = {
-//     origin: 'https://www.domain.com',
-//     credentials: true
-// }
-// app.use(cors(corsOptions));
-app.use(cors());
+let corsOptions = {
+    origin: 'https://fashiongen.pages.dev/',
+    credentials: true
+}
+app.use(cors(corsOptions));
+// app.use(cors());
 
 // POST 요청 받을수 있게 만듬
 app.use(express.json()) // for parsing application/json
@@ -41,7 +44,8 @@ app.post('/generate', async function (req, res) {
     res.json({"AI": description});
 });
 
-app.listen(3000);
+// app.listen(3000);
+module.exports.handler = serverless(app);
 
 // 스윙미 프릴 크롭티
 // 아이보리, 베이지, 스카이블루, 그레이, 블랙
