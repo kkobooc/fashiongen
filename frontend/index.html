@@ -154,7 +154,9 @@
                 chatMessage.appendChild(userMessage);
                 
                 const botMessage = document.createElement('p');
-                botMessage.innerText = `fashionGen AI: ${data.choices[0].text}`;
+                const answer = data.choices[0].text
+                console.log(data.choices[0])
+                botMessage.innerText = `fashionGen AI: ${answer}`;
                 botMessage.classList.add('bot');
                 chatMessage.appendChild(botMessage);
                 
