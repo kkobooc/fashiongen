@@ -14,15 +14,21 @@ const configuration = new Configuration({
 
 // CORS 이슈 해결
 let corsOptions = {
-    origin: ["https://fashiongen.pages.dev","https://fashiongen.ai"],
+    origin: "https://fashiongen.pages.dev",
     credentials: true
 }
 app.use(cors(corsOptions));
-// app.use(cors());
 
 // POST 요청 받을수 있게 만듬
 app.use(express.json()) // for parsing application/json
 app.use(express.urlencoded({ extended: true })) // for parsing application/x-www-form-urlencoded
+
+app.use(function(req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*"); // Allow requests from any origin
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept"); // Allow specified headers
+  next();
+});
+
 
 // GET method route
 app.get('/', function (req, res) {
