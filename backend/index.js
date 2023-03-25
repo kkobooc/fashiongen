@@ -13,7 +13,7 @@ const configuration = new Configuration({
 
 // CORS 이슈 해결
 let corsOptions = {
-    origin: "https://fashiongen.pages.dev",
+    origin: "https://fashiongen.ai",
     credentials: true
 }
 app.use(cors(corsOptions));
