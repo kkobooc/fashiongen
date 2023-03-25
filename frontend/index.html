@@ -125,7 +125,8 @@
                 const color = document.getElementById('input-color').value;
                 const material = document.getElementById('input-material').value;
                 const features = document.getElementById('input-features').value;
-                const user_prompt = `상품명은 "${productName}"이야. 색상은 "${color}"이야. 소재 구성은 "${material}"이야. 상품 특징은 ${features}.`
+                const textile = document.getElementById('input-textile').value;
+                const user_prompt = `상품명은 "${productName}"이야. 색상은 "${color}"이야. 소재 구성은 "${material}"이야. 신축성, 비침, 안감유무는 "${textile}"이야. 상품 특징은 ${features}.`
                 const response = await fetch('https://fph3x28e00.execute-api.ap-northeast-2.amazonaws.com/prod/generate', {
                     method: 'POST',
                     headers: {
@@ -134,7 +135,7 @@
                     body: JSON.stringify({ 
                         model: "davinci:ft-personal:0312-1800-davinci-2023-03-12-09-17-46",
                         prompt: user_prompt,
-                        max_tokens: 1670,
+                        max_tokens: 1600,
                         temperature: 0.6,
                         top_p: 1,
                         n: 1,
