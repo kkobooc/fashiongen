@@ -61,7 +61,7 @@ const HomeIndex = () => {
         const prompt = `상품명은 "${field1}"이야. 색상은 "${field2}"이야. 소재 구성은 "${field3}"이야. 신축성, 비침, 안감유무는 "${field4}"이야. 상품 특징은 ${field5}.`;
         const url = 'https://api.openai.com/v1/completions';
         const body = {
-            model: "davinci:ft-personal:0330-1822-davinci-2023-03-30-11-58-59",
+            model: "davinci:ft-personal:0312-1800-davinci-2023-03-12-09-17-46",
             prompt,
             max_tokens: 1600,
             temperature: 0.6,
