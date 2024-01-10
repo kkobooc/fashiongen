@@ -58,17 +58,22 @@ const HomeIndex = () => {
         }
 
         // api 호출
-        const prompt = `상품명은 "${field1}"이야. 색상은 "${field2}"이야. 소재 구성은 "${field3}"이야. 신축성, 비침, 안감유무는 "${field4}"이야. 상품 특징은 ${field5}.`;
-        const url = 'https://api.openai.com/v1/completions';
+        const prompt = `상품명은 "${field1}"이야. 색상은 "${field2}"이야. 소재 구성은 "${field3}"이야. 신축성, 비침, 안감유무는 "${field4}"이야. 상품 특징은 ${field5}. 최대한 길게 설명을 써줘.`;
+        const url = 'https://api.openai.com/v1/chat/completions';
         const body = {
-            model: "davinci:ft-personal:0330-1822-davinci-2023-03-30-11-58-59",
-            prompt,
-            max_tokens: 1600,
-            temperature: 0.6,
-            top_p: 1,
-            n: 1,
-            stream: false,
-        }
+            "model": "ft:gpt-3.5-turbo-1106:personal::8fHwVwPs",
+            "max_tokens": 1600,
+            "messages": [
+              {
+                "role": "system",
+                "content": "의류 상품의 특징을 활용해서 상품 디자인 설명을 써줘"
+              },
+              {
+                "role": "user",
+                "content": `prompt ${prompt} 최대한 길게 써줘.`
+              }
+            ]
+          }
 
         const headers = {
             headers: {
