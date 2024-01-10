@@ -61,16 +61,16 @@ const HomeIndex = () => {
         const prompt = `상품명은 "${field1}"이야. 색상은 "${field2}"이야. 소재 구성은 "${field3}"이야. 신축성, 비침, 안감유무는 "${field4}"이야. 상품 특징은 ${field5}. 최대한 길게 설명을 써줘.`;
         const url = 'https://api.openai.com/v1/chat/completions';
         const body = {
-            "model": "ft:gpt-3.5-turbo-1106:personal::8fHwVwPs",
-            "max_tokens": 1600,
-            "messages": [
+            model: "ft:gpt-3.5-turbo-1106:personal::8fHwVwPs",
+            max_tokens: 1600,
+            messages: [
               {
-                "role": "system",
-                "content": "의류 상품의 특징을 활용해서 상품 디자인 설명을 써줘"
+                role: "system",
+                content: "의류 상품의 특징을 활용해서 상품 디자인 설명을 써줘"
               },
               {
-                "role": "user",
-                "content": prompt
+                role: "user",
+                content: `${prompt}`
               }
             ]
           }
