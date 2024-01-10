@@ -70,7 +70,7 @@ const HomeIndex = () => {
               },
               {
                 "role": "user",
-                "content": `prompt ${prompt} 최대한 길게 써줘.`
+                "content": prompt
               }
             ]
           }
